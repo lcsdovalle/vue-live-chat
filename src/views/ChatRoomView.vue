@@ -1,6 +1,7 @@
 <template>
   <div class="container mx-auto">
     <NavBar @logout="handleLogout" />
+    <p class="text-red-500 mt-2" v-if="error">{{ error }}</p>
     <form>
       <text-area @send="handleNewMessage" />
     </form>
@@ -15,6 +16,8 @@ import getUser from "@/firebase/getUser";
 import { ref, watch } from "@vue/runtime-core";
 import TextArea from "@/components/TextArea.vue";
 import useCollection from "@/firebase/useCollection";
+import getCollection from "@/firebase/getCollection";
+import { serverTimestamp } from "firebase/firestore";
 export default {
   name: "ChatRoomView",
   components: { NavBar, TextArea },
@@ -23,6 +26,7 @@ export default {
     const store = useStore();
     const router = useRouter();
     const { error, pushDoc } = useCollection("messages");
+    const { error: collectionError, documents } = getCollection("messages");
     const handleLogout = () => {
       store.commit("logout");
       router.push({ name: "home" });
@@ -41,6 +45,7 @@ export default {
       const chatMessage = {
         name: user.value.displayName,
         message: message.value,
+        createdAt: serverTimestamp(),
       };
 
       /**
@@ -49,9 +54,9 @@ export default {
       pushDoc(chatMessage).then((doc) => {
         console.log(doc);
       });
-      console.log(chatMessage);
     };
-    return { handleLogout, handleNewMessage };
+
+    return { handleLogout, handleNewMessage, error, documents };
   },
 };
 </script>

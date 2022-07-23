@@ -1,6 +1,14 @@
 <template>
   <form>
-    <div class="w-full bg-gray-50 rounded-lg border border-gray-200">
+    <div
+      class="
+        w-full
+        md:w-4/6 md:ml-7
+        bg-gray-50
+        rounded-lg
+        border border-gray-200
+      "
+    >
       <div class="py-2 px-4 bg-white rounded-t-lg">
         <textarea
           v-model="message"

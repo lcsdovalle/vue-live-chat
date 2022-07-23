@@ -14,8 +14,8 @@ const register = (email, password, name) => {
       //   store.dispatch("login", data);
       //   router.push("/");
     })
-    .catch((error) => {
-      switch (error.code) {
+    .catch((err) => {
+      switch (err.code) {
         case "auth/credential-already-in-use":
           error.value = "Já possui conta";
           break;

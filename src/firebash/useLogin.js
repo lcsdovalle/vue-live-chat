@@ -2,16 +2,15 @@ import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 import { ref } from "vue";
 
 const error = ref(null);
-
 const login = (email, password) => {
   signInWithEmailAndPassword(getAuth(), email, password)
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       //   store.dispatch("login", data);
       //   router.push("/");
     })
-    .catch((error) => {
-      switch (error.code) {
+    .catch((err) => {
+      switch (err.code) {
         case "auth/invalid-email":
           error.value = "*Digite seu e-mail";
           break;

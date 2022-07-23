@@ -29,7 +29,10 @@
         placeholder="Senha"
         v-model="password"
       />
-      <button class="p-2 bg-slate-600 text-white text-sm rounded-lg mt-2">
+      <button
+        @click.prevent="handleSubmit"
+        class="p-2 bg-slate-600 text-white text-sm rounded-lg mt-2"
+      >
         Log In
       </button>
       <br />
@@ -41,15 +44,21 @@
           >Cadastre-se</span
         >
       </p>
+      <p class="text-red-500 mt-2" v-if="error">{{ error }}</p>
     </form>
   </div>
 </template>
 
 <script>
 import { ref } from "@vue/reactivity";
-import useLoginFirebase from "@/firebash/loginFirebase";
+import useLoginFirebase from "@/firebash/useLogin";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+import getUser from "@/firebash/getUser";
 export default {
   setup(props, { emit }) {
+    const store = useStore();
+    const router = useRouter();
     const email = ref("");
     const password = ref("");
     const showLogin = ref(true);
@@ -57,10 +66,14 @@ export default {
 
     const handleSubmit = () => {
       login(email.value, password.value);
+      if (!error.value) {
+        store.commit("login", getUser().user);
+        router.push({ name: "chat-room" });
+      }
     };
     const toggleForm = () => emit("toggleForm");
 
-    return { email, password, handleSubmit, showLogin, toggleForm };
+    return { email, password, handleSubmit, showLogin, toggleForm, error };
   },
 };
 </script>

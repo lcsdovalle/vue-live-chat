@@ -19,12 +19,12 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDuCmpfSw0YfdIlFh1UIK0-A2s2f6wcqGQ",
-  authDomain: "livechat-66c21.firebaseapp.com",
-  projectId: "livechat-66c21",
-  storageBucket: "livechat-66c21.appspot.com",
-  messagingSenderId: "1057797709926",
-  appId: "1:1057797709926:web:7e90427f5527b89ba94da7",
+  apiKey: process.env.VUE_APP_APIKEY,
+  authDomain: process.env.VUE_APP_AUTHDOMAIN,
+  projectId: process.env.VUE_APP_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGINGSENDERID,
+  appId: process.env.VUE_APP_APPID,
 };
 
 // Initialize Firebase

@@ -8,13 +8,13 @@ const error = ref(null);
 const loginOrSignUpByGoogle = () => {
   signInWithPopup(getAuth(), provider)
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       // store.dispatch("login", result.user);
       // router.push("/");
     })
-    .catch((error) => {
-      console.log(error.message);
-      error.value = error.message;
+    .catch((err) => {
+      console.log(err.message);
+      error.value = err.message;
     });
 };
 

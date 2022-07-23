@@ -50,13 +50,14 @@
           >Fazer login</span
         >
       </p>
+      <p class="text-red-500 mt-2" v-if="error">{{ error }}</p>
     </form>
   </div>
 </template>
 
 <script>
 import { ref } from "@vue/reactivity";
-import useCreateAccountFirebase from "@/firebash/createAccountFirebase";
+import useCreateAccountFirebase from "@/firebash/useCreateAccount";
 export default {
   setup(props, { emit }) {
     const displayName = ref("");
@@ -65,14 +66,15 @@ export default {
     const { error, register } = useCreateAccountFirebase();
 
     const handleSubmit = () => {
-      console.log(displayName.value, email.value, password.value);
       register(email.value, password.value, displayName.value);
-      console.log(error);
+      if (!error) {
+        emit("signUp");
+      }
     };
 
     const toggleForm = () => emit("toggleForm");
 
-    return { displayName, email, password, handleSubmit, toggleForm };
+    return { displayName, email, password, handleSubmit, toggleForm, error };
   },
 };
 </script>

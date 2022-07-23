@@ -1,22 +1,7 @@
 import { initializeApp, firebase } from "firebase/app";
-import {
-  getFirestore,
-  doc,
-  onSnapshot,
-  collection,
-  addDoc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
-import {
-  getAuth,
-  onAuthStateChanged,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.VUE_APP_APIKEY,

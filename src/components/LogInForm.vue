@@ -51,10 +51,10 @@
 
 <script>
 import { ref } from "@vue/reactivity";
-import useLoginFirebase from "@/firebash/useLogin";
+import useLoginFirebase from "@/firebase/useLogin";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import getUser from "@/firebash/getUser";
+import getUser from "@/firebase/getUser";
 export default {
   setup(props, { emit }) {
     const store = useStore();

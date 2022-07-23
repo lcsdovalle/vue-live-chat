@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import useLogoutFirebase from "@/firebash/useLogout";
-import getUser from "@/firebash/getUser";
+import useLogoutFirebase from "@/firebase/useLogout";
+import getUser from "@/firebase/getUser";
 import { useRouter } from "vue-router";
 export default {
   setup(_, { emit }) {

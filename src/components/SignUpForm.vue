@@ -57,7 +57,7 @@
 
 <script>
 import { ref } from "@vue/reactivity";
-import useCreateAccountFirebase from "@/firebash/useCreateAccount";
+import useCreateAccountFirebase from "@/firebase/useCreateAccount";
 export default {
   setup(props, { emit }) {
     const displayName = ref("");

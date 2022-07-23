@@ -11,10 +11,10 @@
 import NavBar from "@/components/NavBar.vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import getUser from "@/firebash/getUser";
+import getUser from "@/firebase/getUser";
 import { ref, watch } from "@vue/runtime-core";
 import TextArea from "@/components/TextArea.vue";
-import useCollection from "@/firebash/useCollection";
+import useCollection from "@/firebase/useCollection";
 export default {
   name: "ChatRoomView",
   components: { NavBar, TextArea },

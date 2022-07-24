@@ -1,5 +1,5 @@
 <template>
-  <div class="container m-auto h-screen w-screen flex rounded-lg p-2">
+  <div class="container m-auto h-screen w-screen md:flex rounded-lg p-2">
     <form
       @submit.prevent="handleSubmit"
       class="

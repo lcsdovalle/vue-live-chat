@@ -1,14 +1,6 @@
 <template>
   <form>
-    <div
-      class="
-        w-full
-        md:w-4/6 md:ml-7
-        bg-gray-50
-        rounded-lg
-        border border-gray-200
-      "
-    >
+    <div class="w-full bg-gray-50 rounded-lg border border-gray-200">
       <div class="py-2 px-4 bg-white rounded-t-lg">
         <textarea
           v-model="message"
@@ -16,10 +8,10 @@
           id="comment"
           rows="4"
           class="
-            px-0
+            p-2
             w-full
             border-0
-            outline-slate-200 outline-hidden
+            outline-none
             dark:text-gray-500 dark:placeholder-gray-400
           "
           placeholder="Sua mensagem"
@@ -38,11 +30,11 @@
             text-xs
             font-medium
             text-center text-white
-            bg-blue-700
+            bg-teal-700
             rounded-lg
-            focus:ring-4 focus:ring-blue-200
-            dark:focus:ring-blue-900
-            hover:bg-blue-800
+            focus:ring-4 focus:ring-teal-200
+            dark:focus:ring-teal-900
+            hover:bg-teal-900
           "
         >
           Enviar

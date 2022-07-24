@@ -1,6 +1,7 @@
 <template>
   <div class="container mx-auto">
     <NavBar @logout="handleLogout" />
+    <messages-window />
     <p class="text-red-500 mt-2" v-if="error">{{ error }}</p>
     <form>
       <text-area @send="handleNewMessage" />
@@ -16,17 +17,16 @@ import getUser from "@/firebase/getUser";
 import { ref, watch } from "@vue/runtime-core";
 import TextArea from "@/components/TextArea.vue";
 import useCollection from "@/firebase/useCollection";
-import getCollection from "@/firebase/getCollection";
 import { serverTimestamp } from "firebase/firestore";
+import MessagesWindow from "@/components/MessagesWindow.vue";
 export default {
   name: "ChatRoomView",
-  components: { NavBar, TextArea },
+  components: { NavBar, TextArea, MessagesWindow },
   setup() {
     const { user } = getUser();
     const store = useStore();
     const router = useRouter();
     const { error, pushDoc } = useCollection("messages");
-    const { error: collectionError, documents } = getCollection("messages");
     const handleLogout = () => {
       store.commit("logout");
       router.push({ name: "home" });
@@ -56,7 +56,7 @@ export default {
       });
     };
 
-    return { handleLogout, handleNewMessage, error, documents };
+    return { handleLogout, handleNewMessage, error };
   },
 };
 </script>

@@ -11,11 +11,20 @@ const guardAuth = (to, from, next) => {
   }
 };
 
+const requireNoAuth = (to, from, next) => {
+  if (getAuth().currentUser) {
+    next({ name: "chat-room" });
+  } else {
+    next();
+  }
+};
+
 const routes = [
   {
     path: "/",
     name: "home",
     component: WelcomeView,
+    beforeEnter: [requireNoAuth],
   },
   {
     path: "/chatroom",

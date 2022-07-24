@@ -1,21 +1,15 @@
 <template>
-  <nav v-if="user">
+  <nav v-if="user" class="bg-teal-800 text-white">
     <div class="flex justify-between">
-      <p>Hey there {{ user.displayName }}</p>
-      <p
-        @click="handleLogout"
-        class="
-          text-xs
-          font-semibold
-          text-gray-600
-          border
-          rounded-md
-          p-1
-          hover:text-white hover:bg-gray-800 hover:cursor-pointer
-        "
-      >
-        Logout
+      <p>
+        Fala <span class="font-bold">{{ user.displayName }}</span>
       </p>
+      <span
+        class="material-symbols-outlined cursor-pointer"
+        @click="handleLogout"
+      >
+        logout
+      </span>
     </div>
   </nav>
 </template>
